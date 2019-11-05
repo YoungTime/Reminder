@@ -13,10 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.ryan.lib_bmob.BmobUtil;
 import com.ryan.lib_common.StringUtil;
+import com.ryan.lib_common.ToastUtil;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -81,6 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onFailed(BmobException e) {
                     System.out.println(e);
+                    Toast.makeText(RegisterActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
                 }
             });
 
