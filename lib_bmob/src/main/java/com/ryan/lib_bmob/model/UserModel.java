@@ -7,8 +7,5 @@ import io.reactivex.disposables.Disposable;
 public class UserModel extends BmobUser {
 
 
-    @Override
-    public <T> Disposable signUp(SaveListener<T> listener) {
-        return super.signUp(listener);
-    }
+
 }

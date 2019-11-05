@@ -1,9 +1,7 @@
 package com.ryan.lib_bmob;
 
-import com.ryan.lib_bmob.model.BaseObject;
 import com.ryan.lib_bmob.model.UserModel;
 
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
@@ -61,31 +59,24 @@ public class BmobUtil {
     /**
      * 发送验证邮件
      */
-    public static void register(String email, final OnBmobResultCallback callback) {
+    public static void register(String username,String password,String email, final OnBmobResultCallback callback) {
 
         UserModel userModel = new UserModel();
-        userModel.setUsername("123456");
-        userModel.setPassword("123456");
+        userModel.setUsername(username);
+        userModel.setPassword(password);
+        userModel.setEmail(email);
 
         userModel.signUp(new SaveListener<UserModel>() {
             @Override
             public void done(UserModel userModel, BmobException e) {
-
+                if (e != null){
+                    callback.onFailed(e);
+                }else {
+                    callback.onSuccess(userModel);
+                }
             }
         });
     }
 
-    public static void d(){
-        BaseObject baseObject = new BaseObject();
-        baseObject.setDate("fdahfghadg");
-        baseObject.setName("fdafghdagda");
-
-        baseObject.save(new SaveListener<String>() {
-            @Override
-            public void done(String s, BmobException e) {
-                System.out.println(s+e.getMessage());
-            }
-        });
-    }
 
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import cn.bmob.v3.Bmob;
 
-public class BombConfig {
+public class BmobConfig {
 
 
     public static void initBomb(Context context){
